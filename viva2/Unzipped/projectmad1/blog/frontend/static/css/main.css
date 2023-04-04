@@ -1,0 +1,269 @@
+
+
+body{
+    color:#1864ab;
+    background-color:#f1f3f5;
+    }
+    
+    .content{
+    padding-top:1%;
+    padding:5%;
+    }
+
+    .row{
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-top: 100px;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .nav-link{
+      font-size: xxx-large;
+      font-weight: bolder;
+    }   
+    .nav-home{
+      font-size: large;
+      font-weight: bolder;
+    }  
+    
+    .navbar-dark .navbar-nav .nav-link {
+      color: rgba(244, 119, 30, 0.92);
+  }
+
+  .carousel {
+      position: relative;
+      margin-top: 100;
+  }
+
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200;
+    margin-left: 100;
+  }
+  .button-container-login {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100;
+    margin-left: 50;
+  }
+  .button-login {
+    width: 30%;
+    height: auto;
+    padding: 10px;
+    background-color: #df1f06;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 30px;
+    margin-left: 275px;
+    border-radius: 5px;
+  }
+  .button {
+    width: 150%;
+    height: auto;
+    padding: 20px;
+    background-color: #49b4ca;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 30px;
+    margin-left: 60;
+    margin-top: 5;
+  }
+
+
+    /* Register and login form */
+    .login-block{
+    
+    background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    float:left;
+    width:100%;
+    height:800px
+    }
+    .banner-sec{background:url()  no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
+    .container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+    
+    
+    .post-form {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .post-form label {
+      width: 100px;
+      margin-right: 10px;
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    .post-form input[type="text"], .post-form textarea {
+      width: 80%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    
+    .post-form input[type="file"] {
+      margin: 8px 0;
+    }
+    
+    .post-form input[type="submit"] {
+      width: 20%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .post-form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    
+
+    .button-edit {
+      width: 150%;
+      height: auto;
+      padding: 20px;
+      background-color: #49b4ca;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 30px;
+      margin-left: -100;
+      margin-top: 5;
+  }
+
+  .button-container-del {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    margin-left: 100;
+}
+.button-edit-del {
+  width: 150%;
+  height: auto;
+  padding: 20px;
+  background-color: #ed0a0a;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 30px;
+  margin-left: -100;
+  margin-top: 5;
+}
+
+body{
+  margin-top:20px;
+  background:#eee;
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  white-space: nowrap;
+  border-radius: 1000px;
+  vertical-align: bottom
+}
+
+.avatar i {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 100%
+}
+
+.avatar img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 0 none;
+  border-radius: 1000px
+}
+
+.avatar-online i {
+  background-color: #4caf50
+}
+
+.avatar-off i {
+  background-color: #616161
+}
+
+.avatar-busy i {
+  background-color: #ff9800
+}
+
+.avatar-away i {
+  background-color: #f44336
+}
+
+.avatar-100 {
+  width: 100px
+}
+
+.avatar-100 i {
+  height: 20px;
+  width: 20px
+}
+
+.avatar-lg {
+  width: 50px
+}
+
+.avatar-lg i {
+  height: 12px;
+  width: 12px
+}
+
+.avatar-sm {
+  width: 30px
+}
+
+.avatar-sm i {
+  height: 8px;
+  width: 8px
+}
+
+.avatar-xs {
+  width: 20px
+}
+
+.avatar-xs i {
+  height: 7px;
+  width: 7px
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid transparent;
+}
+
+
+
+
+
+
+

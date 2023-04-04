@@ -1,0 +1,364 @@
+openapi: 3.0.0
+info:
+  title: Blog
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000/
+paths:
+  /user/{username}:
+    description: End point to read, update and delete a course resource with username = userName.
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: john
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    example: 201
+                  email:
+                    type: string
+                    example: abc@123.com
+                  name:
+                    type: string
+                    example: pear
+
+        '500':
+          description: Internal Server Error
+        '404':
+          description: User not found
+
+    put:
+      description: Operation to update the course resource.
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: iitm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: servers@info.com
+                name:
+                  type: string
+                  example: app
+
+      responses:
+        '200':
+          description: Successfuly updated
+
+        '404':
+          description: User not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+    delete:
+      description: Operation to delete the user resource
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: biscuit
+
+      responses:
+        '200':
+          description: Successfully Deleted
+        '404':
+          description: User not found
+        '500':
+          description: Intenal Server Error
+
+  /user:
+    description: End point to create user resource
+    post:
+      description: Operation to create the user resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+                title: user object
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    example: 201
+                  email:
+                    type: string
+                    example: abc@123.com
+                  name:
+                    type: string
+                    example: pear
+
+      responses:
+        '201':
+          description: Successfully Created
+
+
+        '409':
+          description: user already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_message:
+                    type: string
+                  
+
+  /feed/{username}:
+    description: End point to read, update and delete a course resource with username = userName.
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: john
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+                    example: 201
+                  username:
+                    type: string
+                    example: red
+                  title:
+                    type: string
+                    example: Blog
+                  writeup:
+                    type: string
+                    example: tired!!
+        '500':
+          description: Internal Server Error
+          
+  /user-post/{username}:
+    description: End point to read, update and delete a course resource with username = userName.
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: john
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+                    example: 201
+                  username:
+                    type: string
+                    example: red
+                  title:
+                    type: string
+                    example: Blog
+                  body:
+                    type: string
+                    example: tired!
+        '500':
+          description: Internal Server Error
+          
+  /profile/{username}:
+    description: End point to read, update and delete a course resource with username = userName.
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: john
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+                    example: 201
+                  username:
+                    type: string
+                    example: red
+                  title:
+                    type: string
+                    example: Blog
+                  writeup:
+                    type: string
+                    example: tired!
+        '500':
+          description: Internal Server Error
+
+
+  /search/{str}:
+    description: End point to read, update and delete a course resource with username = userName.
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: str
+          required: true
+          schema:
+            type: string
+            example: john
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  username:
+                    type: string
+                    example: pink
+        '500':
+          description: Internal Server Error
+          
+  /follows/{username}:
+    description: End point to read, update and delete a course resource with username = userName.
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+            example: john
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  following:
+                    type: string
+                    example: pink
+                  follower:
+                    type: string
+                    example: red
+
+        '500':
+          description: Internal Server Error
+          
+  /follows:
+    description: End point to create followa resource
+    post:
+      description: Operation to create the follows resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+                title: user object
+                type: object
+                properties:
+                  follower:
+                    type: string
+                    example: pink
+                  following:
+                    type: string
+                    example: iitm
+      responses:
+      
+        '201':
+          description: Successfully Created
+
+
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_message:
+                    type: string
+                    
+    delete:
+      description: Operation to create the follows resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+                title: user object
+                type: object
+                properties:
+                  follower:
+                    type: string
+                    example: pink
+                  following:
+                    type: string
+                    example: iitm
+      responses:
+        '200':
+          description: Successfully Deleted
+        '404':
+          description: User not found
+        '500':
+          description: Intenal Server Error
+      
+
+          

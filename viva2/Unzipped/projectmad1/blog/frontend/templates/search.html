@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+  <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="  border-bottom: 4px solid #EC4849;">
+
+    <ul class="nav navbar-nav  " style="font-size:17px;">
+
+        <li class="nav-item">
+
+            <a class="nav-home" href="/feed">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                <span class="glyphicon glyphicon-home"></span> <br>&nbsp &nbsp &nbsp &nbsp Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-home" href="{{ url_for('addpost' ) }}"> &nbsp &nbsp &nbsp &nbsp &nbsp 
+                <span class="glyphicon glyphicon-plus"></span> <br>&nbsp &nbsp &nbsp &nbsp Add</a>
+        </li>
+      <li class="nav-item">
+            <a class="nav-home" href="/mynetwork"> &nbsp &nbsp &nbsp &nbsp &nbsp<span
+                    class=" glyphicon glyphicon-user"></span> <br>&nbsp &nbsp My network</a>
+        </li>
+
+        <li class="nav-item">
+            <form action="/search" method="post" class="my-5">
+                <input type="text" name="find">
+                <input type="submit" value="Search">
+            </form>
+                    
+        </li>
+
+        <div class="dropdown" style="float:right;transform:translateX(450%); z-index:10">
+            {{request.user}}
+            <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown">
+                <img src="../static/css/userlogo.png"
+                     alt="" height="55" width="55">
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ url_for('profile' ) }}"> Profile</a>
+
+                <a class="dropdown-item" href="{{ url_for('mypost' ) }}">My Post</a>
+                <a class="dropdown-item" href="../logout"> &nbsp Logout</a>
+            </div>
+        </div>
+
+
+    </ul>
+
+</nav>
+
+
+<!-- <table>
+    {% for f in ans %}
+      <tr>
+        <td>{{ f.username }}</td>
+        <td>{{ f.name }}</td>
+      </tr>
+    {% endfor %}
+    </table> -->
+    
+    <div class="container">
+        <div class="row bootstrap snippets bootdey">
+            <div class="col-md-8 col-xs-12">
+              <div class="panel" id="followers">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    <i class="icon md-check" aria-hidden="true"></i> Your Search
+                  </h3>
+                </div>
+    
+               
+                {% for f in ans %}
+                {% if ans|length > 0 %}
+                <div class="panel-body">
+                  <ul class="list-group list-group-dividered list-group-full">
+                    <li class="list-group-item">
+                      <div class="media">
+                        <div class="media-left">
+    
+                          <a class="avatar avatar-online" href="javascript:void(0)">
+                            <img src="../static/css/userlogo.png" alt="">
+                            <i></i>
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <div><a class="name" href="{{ url_for('new', username=f.username)}}">{{ f.username }}</a></div>
+                          <small>{{ f.email }}</small>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>           
+                </div>
+
+                {% else%}
+                <div class="container">
+                  <p>NO USERS!</p>
+              </div>
+          {% endif %}               
+           {% endfor %}
+
+    
+    
+              </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+</body>
+
+</html>
