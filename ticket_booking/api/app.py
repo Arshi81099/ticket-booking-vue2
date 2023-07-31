@@ -329,14 +329,13 @@ class TheatreAPI(Resource):
         else:
             raise NotFoundError(status_code=404)
 
-    def put(self, id):
-        theatre = Theatre.query.filter(Theatre.code == id).scalar()
+    def put(self, code):
+        theatre = Theatre.query.filter(Theatre.code == code).scalar()
         args = theatre_parser.parse_args()
         
         name = args.get('name', None)
         capacity = args.get('capacity', None)
         address = args.get('address', None)
-        code = args.get('code', None)
 
         if (name is not None) :
             theatre.name = name
@@ -344,8 +343,7 @@ class TheatreAPI(Resource):
             theatre.capacity = capacity
         if (address is not None) :
             theatre.address = address
-        if (code is not None) :
-            theatre.code = code
+
 
         db.session.commit()
 
@@ -359,7 +357,7 @@ class TheatreAPI(Resource):
         address = args.get('address', None)
         code = args.get('code', None)
 
-        if not name:
+        if name is None:
             return "Provide name", 400
 
         if (capacity is None) or not (capacity.isnumeric()):
@@ -367,7 +365,7 @@ class TheatreAPI(Resource):
                 status_code=400,
                 error_message="Capacity is required and should be integer."
             )
-        if (address is None) or not (address.isalnum()):
+        if (address is None) :
             raise BusinessValidationError(
                 status_code=400,
                 error_message="Address is required and should be alphanumeric."
@@ -390,16 +388,10 @@ class TheatreAPI(Resource):
 
         return "Theatre created!", 201
 
-    def delete(self, id):
-        theatre = Theatre.query.filter(Theatre.id == id).scalar()
-        # args = theatre_parser.parse_args()
+    def delete(self, code):
+        theatre = Theatre.query.filter(Theatre.code == code).scalar()
 
-        # name = args.get('name', None)
-        # capacity = args.get('capacity', None)
-        # address = args.get('address', None)
-        # code = args.get('code', None)
-
-        if id:
+        if theatre is None:
             raise NotFoundError(status_code=404)
 
         db.session.delete(theatre)
@@ -814,7 +806,7 @@ api.add_resource(UserAPI, "/user", "/user/<string:username>")
 api.add_resource(SearchAPI, '/search/<string:search_str>')
 api.add_resource(Trending, '/trending')
 api.add_resource(BookAPI, '/book', '/book/<int:id>')
-api.add_resource(TheatreAPI, '/theatre', '/theatre/<int:id>')
+api.add_resource(TheatreAPI, '/theatre', '/theatre/<int:code>')
 api.add_resource(ShowAPI, '/show', '/show/<int:id>')
 # api.add_resource(SearchAPI, '/search')
 

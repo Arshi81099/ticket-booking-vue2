@@ -9,12 +9,15 @@
     <form @submit.prevent="updateDetails" class="update-form">
       <label for="displayName">Name:</label>
       <input type="text" v-model="name" id="name" >
-      <br>
+      <!-- <br>
       <label for="email">Email:</label>
-      <input type="email" v-model="email" id="email" >
+      <input type="email" v-model="email" id="email" > -->
       <br>
       <label for="password">Password:</label>
-      <input type="password" v-model="password" id="password" >
+      <input type="password" v-model="password" id="password"  required>
+      <br>
+      <label for="confirmpassword">Confirm Password:</label>
+      <input type="password" v-model="confirmpassword" id="confirm-password" required>
       <br>
       <button type="submit">Update Details</button>
     </form>
@@ -29,6 +32,7 @@ export default {
       name : "",
       // email : "",
       password : "",
+      confirmpassword : "",
       n_email : ""
     };
   },
@@ -58,16 +62,19 @@ export default {
         }
     },
     async updateDetails() {
-      // const old_email = sessionStorage.getItem("email")
-      // const formData = new FormData();
-      //     formData.append('name', this.name);
-      //     formData.append('n_email', this.email);
-      //     formData.append('email', old_email);
-      //     formData.append('password', this.password);
+      if (this.password != this.confirmpassword){
+                window.alert("Your Password and confirm password should be same.")
+                console.log(this.password, this.confirmpassword)
+                return 
+            }
+            if (this.name.trim() === ""){
+              delete this.updateData.name
+              
+            }
       const response = await this.$http.put('user', this.updateData);
               if (response.status === 201) {
   
-                  window.alert("details updated successfully!")
+                 window.alert("details updated successfully!")
                   this.$router.push('/userdashboard');
                   window.location.reload()
                 } else if (response.status === 400) {

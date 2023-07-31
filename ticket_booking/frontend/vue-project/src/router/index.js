@@ -64,15 +64,21 @@ const router = new VueRouter({
       component: () => import('../components/TheatreManagement.vue')
     },
     {
+      path: '/theatreadd',
+      name: 'theatreadd',
+      component: () => import('../components/TheatreAdd.vue')
+    },
+    {
       path: '/showedit',
       name: 'showedit',
       component: () => import('../components/ShowEdit.vue')
     },
     {
-      path: '/theatreedit',
+      path: '/theatreedit/:theatreCode',
       name: 'theatreedit',
       component: () => import('../components/TheatreEdit.vue')
     },
+
     {
       path: '/userdashboard',
       name: 'userdashboard',
